@@ -1,0 +1,22 @@
+# Ignore Visual Studio temporary files, build results, and
+# user-specific files
+*.obj
+*.bin
+*.cache
+*.user
+*.rsuser
+*.suo
+*.log
+*.tlog
+*.pdb
+
+# Auto-generated files
+*.AssemblyInfo.cs
+*.editorconfig
+
+# NuGet packages
+*.nupkg
+*.snupkg
+project.assets.json
+project.nuget.cache
+*.nuget.dgspec.json
