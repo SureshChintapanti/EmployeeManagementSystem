@@ -1,0 +1,51 @@
+﻿using Microsoft.Data.SqlClient;
+using System.Data;
+
+namespace KendoBizPro.Business
+{
+    public class StudentClass(IConfiguration configuration)
+    {
+        private readonly string _connectionString = configuration.GetConnectionString("DefaultConnection");
+
+        public List<Student> GetStudents()
+        {
+            List<Student> students = new List<Student>();
+
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                try
+                {
+                    conn.Open();
+                    string query = "SELECT Id, Name, Email FROM Students";
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        Student student = new Student
+                        {
+                            Id = reader.GetInt32(0),
+                            Name = reader.GetString(1),
+                            Email = reader.GetString(2)
+                        };
+                        students.Add(student);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // Log the full exception details
+                    Logger.LogError(ex, "Error fetching students data");
+                    throw;
+                }
+            }
+            return students;
+        }
+
+        public class Student
+        {
+            public int Id { get; set; }
+            public string Name { get; set; }
+            public string Email { get; set; }
+        }
+    }
+}

@@ -1,0 +1,21 @@
+<!-- Top Navbar -->
+<div class="top-navbar">
+    <div class="logo">Employee Management System</div>
+    <div class="top-links">
+        <a (click)="onLogOut()">Log Out</a>
+        <a [routerLink]="['/admin']" [queryParams]="{ userId: userId }"  [routerLinkActive]="['router-link-active']">Admin User</a>
+        <!-- <span >shield_person</span>Admin User -->
+
+    </div>
+</div>
+
+<!-- Bottom Navbar -->
+<div class="bottom-navbar">
+    <!-- <a (click)="dashboard()" routerLinkActive="router-link-active">Dashboard</a> -->
+    <a (click)="getDetails('employee')">Employees</a>
+    <!-- <a [routerLink]="['/employees']" routerLinkActive="router-link-active">Employees</a> -->
+    <a (click)="getDetails('department')">Departments</a>
+    <!-- <a [routerLink]="['/settings']" routerLinkActive="router-link-active" >Settings</a> -->
+</div>
+
+<!-- srs_GetEmployees -->

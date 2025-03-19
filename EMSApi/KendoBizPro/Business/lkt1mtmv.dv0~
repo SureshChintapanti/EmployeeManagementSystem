@@ -1,0 +1,43 @@
+﻿using Microsoft.Data.SqlClient;
+using System.Data;
+
+namespace KendoBizPro.Business
+{
+    public class Employee
+    {
+
+
+
+        public DataSet GetEmployees(string? sortColumn = "EmployeeName", string? sortDirection = "ASC", string? filterName = null, string? filterStatus = null)
+        {
+            DataSet ds = new DataSet();
+            StudentService studentService = new StudentService();
+
+            try
+            {
+                using (SqlConnection con = new SqlConnection(studentService._connectionString))
+                using (SqlCommand cmd = new SqlCommand("srs_GetEmployees", con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@SortColumn", sortColumn);
+                    cmd.Parameters.AddWithValue("@SortDirection", sortDirection);
+                    cmd.Parameters.AddWithValue("@FilterName", filterName ?? (object)DBNull.Value);
+                    cmd.Parameters.AddWithValue("@FilterStatus", filterStatus ?? (object)DBNull.Value);
+
+                    con.Open();
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
+                    {
+                        adapter.Fill(ds);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log the exception message (you can use a logging framework)
+                Console.WriteLine($"Error: {ex.Message}");
+            }
+
+            return ds;
+        }
+    }
+}

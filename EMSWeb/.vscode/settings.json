@@ -1,0 +1,8 @@
+{
+    "appService.zipIgnorePattern": [
+        "node_modules{,/**}",
+        ".vscode{,/**}"
+    ],
+    "appService.defaultWebAppToDeploy": "/subscriptions/c7b595a0-a919-4d55-a8ea-59d673b4aca5/resourceGroups/DataConnect/providers/Microsoft.Web/sites/DataConnectClient",
+    "appService.deploySubpath": "dist\\kendo-biz-pro\\browser"
+}

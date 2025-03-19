@@ -1,0 +1,177 @@
+<h2>New Employer Registration</h2>
+<div class="registration-container">
+
+    <div class="containers">
+        <!-- Company Information -->
+        <div class="section">
+            <h3>Company Information</h3>
+            <div class="grid-container">
+                <div>
+                    <kendo-floatinglabel [labelCssClass]="'required'" [style]="{'width': '88%'}" text="Company Name">
+                        <kendo-textbox (valueChange)="valueChange($event)"
+                            [(ngModel)]="registrationModel.companyName"></kendo-textbox>
+                    </kendo-floatinglabel>
+                </div>
+                <div>
+                    <kendo-floatinglabel [labelCssClass]="'required'" [style]="{'width': '88%'}" text="Industry">
+                        <kendo-dropdownlist (valueChange)="valueChange($event)" [data]="industries"
+                            placeholder="Select industry" [(ngModel)]="registrationModel.industry"></kendo-dropdownlist>
+                    </kendo-floatinglabel>
+                </div>
+            </div>
+            <div class="flex-row grid-container">
+                <div>
+                    <kendo-floatinglabel [labelCssClass]="'required'" [style]="{'width': '88%'}"
+                    text="Company Description">
+                    <kendo-textbox (valueChange)="valueChange($event)"
+                        [(ngModel)]="registrationModel.companyDescription"></kendo-textbox>
+                </kendo-floatinglabel>
+                </div>
+                <div>
+                    <!-- <kendo-floatinglabel    [labelCssClass]="'required'" [style]="{'width': '88%'}" text="Number of Employees">
+                        <kendo-numerictextbox (valueChange)="valueChange($event)"  [(ngModel)]="registrationModel.numberOfEmployees" [format]="'n0'" [min]="1" [max]="100"></kendo-numerictextbox>
+                    </kendo-floatinglabel> -->
+                    <kendo-floatinglabel [labelCssClass]="'required'" [style]="{'width': '88%'}" text="Website">
+                        <kendo-textbox (valueChange)="valueChange($event)" [(ngModel)]="registrationModel.website"
+                            placeholder="https://" prefixIcon="globe"></kendo-textbox>
+                    </kendo-floatinglabel>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Primary Contact -->
+        <div class="section">
+            <h3>Primary Contact</h3>
+            <div class="flex-row grid-container">
+                <div>
+                    <kendo-floatinglabel [labelCssClass]="'required'" [style]="{'width': '88%'}" text="First Name">
+                        <kendo-textbox (valueChange)="valueChange($event)"
+                            [(ngModel)]="registrationModel.firstName"></kendo-textbox>
+                    </kendo-floatinglabel>
+                </div>
+                <div>
+                    <kendo-floatinglabel [labelCssClass]="'required'" [style]="{'width': '88%'}" text="Last Name">
+                        <kendo-textbox (valueChange)="valueChange($event)"
+                            [(ngModel)]="registrationModel.lastName"></kendo-textbox>
+                    </kendo-floatinglabel>
+                </div>
+            </div>
+            <div class="flex-row grid-container">
+                <div>
+
+                    <kendo-floatinglabel [labelCssClass]="'required'" [style]="{'width': '88%'}" text="Job Title">
+                        <kendo-textbox (valueChange)="valueChange($event)" [(ngModel)]="registrationModel.jobTitle"
+                            placeholder="e.g., HR Director"></kendo-textbox>
+                    </kendo-floatinglabel>
+
+                </div>
+                <div>
+
+                    <kendo-floatinglabel [labelCssClass]="'required'" [style]="{'width': '88%'}" text="Work Email">
+                        <kendo-textbox (valueChange)="valueChange($event)" [(ngModel)]="registrationModel.workEmail"
+                            prefixIcon="email"></kendo-textbox>
+                    </kendo-floatinglabel>
+                </div>
+            </div>
+
+            <div class="flex-row grid-container">
+                <div>
+
+                    <kendo-floatinglabel [labelCssClass]="'required'" [style]="{'width': '88%'}" text="Phone Number">
+                        <kendo-numerictextbox (valueChange)="valueChange($event)" [format]="'#'"
+                            [(ngModel)]="registrationModel.phoneNumber" [min]="1"
+                            [maxlength]="10"></kendo-numerictextbox>
+                    </kendo-floatinglabel>
+                </div>
+            </div>
+        </div>
+
+        <!-- Address -->
+        <div class="section">
+            <h3>Address</h3>
+            <div class="grid-container">
+                <div>
+                    <kendo-floatinglabel [labelCssClass]="'required'" [style]="{'width': '88%'}" text="Street Address">
+                        <kendo-textbox (valueChange)="valueChange($event)"
+                            [(ngModel)]="registrationModel.streetAddress"></kendo-textbox>
+                    </kendo-floatinglabel>
+                </div>
+                <div>
+                    <kendo-floatinglabel [labelCssClass]="'required'" [style]="{'width': '88%'}" text="City">
+                        <kendo-textbox (valueChange)="valueChange($event)"
+                            [(ngModel)]="registrationModel.city"></kendo-textbox>
+                    </kendo-floatinglabel>
+
+                </div>
+            </div>
+
+            <div class="flex-row grid-container">
+                <div>
+
+                    <kendo-floatinglabel [labelCssClass]="'required'" [style]="{'width': '88%'}" text="State/Province">
+                        <kendo-textbox (valueChange)="valueChange($event)"
+                            [(ngModel)]="registrationModel.stateProvince"></kendo-textbox>
+                    </kendo-floatinglabel>
+                </div>
+                <div>
+                    <kendo-floatinglabel [labelCssClass]="'required'" [style]="{'width': '88%'}" text="Postal Code">
+                        <kendo-numerictextbox (valueChange)="valueChange($event)" [format]="'#'"
+                            [(ngModel)]="registrationModel.postalCode" [min]="1"
+                            [maxlength]="10"></kendo-numerictextbox>
+                    </kendo-floatinglabel>
+                </div>
+            </div>
+
+            <div class="flex-row grid-container">
+                <div>
+                    <kendo-floatinglabel [labelCssClass]="'required'" [style]="{'width': '88%'}" text="Country">
+                        <kendo-dropdownlist (valueChange)="countryChange($event)" [data]="countries"
+                            placeholder="Select country" [(ngModel)]="registrationModel.country"></kendo-dropdownlist>
+                    </kendo-floatinglabel>
+                </div>
+            </div>
+        </div>
+
+        <!-- Account Setup -->
+        <div class="section">
+            <h3>Account Setup</h3>
+
+            <div class="grid-container">
+                <div>
+                    <kendo-floatinglabel [labelCssClass]="'required'" [style]="{'width': '88%'}" text="Username">
+                        <kendo-textbox (valueChange)="valueChange($event)" [(ngModel)]="registrationModel.Username"
+                            prefixIcon="user" [disabled]="isUpdate"></kendo-textbox>
+                    </kendo-floatinglabel>
+                </div>
+                <div>
+                    <kendo-floatinglabel [labelCssClass]="'required'" [style]="{'width': '88%'}" text="Password">
+                        <kendo-textbox (valueChange)="valueChange($event)" [(ngModel)]="registrationModel.password"
+                            prefixIcon="lock" type="password"></kendo-textbox>
+                    </kendo-floatinglabel>
+                </div>
+            </div>
+            <div class="grid-container">
+                <div>
+                    <kendo-floatinglabel [labelCssClass]="'required'" [style]="{'width': '88%'}"
+                        text="Confirm Password">
+                        <kendo-textbox (valueChange)="valueChange($event)"
+                            [(ngModel)]="registrationModel.confirmPassword" prefixIcon="lock"
+                            type="password"></kendo-textbox>
+                    </kendo-floatinglabel>
+                </div>
+            </div>
+
+            <div class="flex-row">
+                <kendo-checkbox [(ngModel)]="this.registrationModel.agreeToTerms"
+                    (click)="checkTerms($event)"></kendo-checkbox>
+                <label>I agree to the terms of service and privacy policy</label>
+            </div>
+
+        </div>
+    </div>
+    <div class="button-group">
+        <button kendoButton class="cancel-btn" (click)="onCancelClick()">Cancel</button>
+        <button kendoButton class="register-btn" (click)="fnValidate()">Register Employer</button>
+    </div>
+</div>

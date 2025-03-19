@@ -1,0 +1,6 @@
+@KendoBizPro_HostAddress = http://localhost:5168
+
+GET {{KendoBizPro_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

@@ -1,0 +1,23 @@
+
+
+/* You can add global styles to this file, and also import other style files */
+.notification {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #4caf50;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 4px;
+    opacity: 0.9;
+    transition: opacity 0.5s;
+  }
+  
+  .required::after {
+    content: ' *';
+    color: red;
+    margin-left: 2px;
+    font-weight: bold;
+  
+}
+

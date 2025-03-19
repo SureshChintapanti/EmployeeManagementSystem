@@ -1,0 +1,34 @@
+<div class="login-container">
+    <h1>Employee Management System</h1>
+    <div class="main-container">
+        <div class="login-box">
+            <h2>Login</h2>
+            <p>Enter your credentials to access the employee management dashboard.</p>
+            <div>
+                <kendo-floatinglabel text="Username">
+                    <kendo-textbox (valueChange)="valueChange($event)" [(ngModel)]="registrationModel.Username"
+                        placeholder="Enter your email address">
+                    </kendo-textbox>
+                </kendo-floatinglabel>
+            </div>
+            <div>
+                <kendo-floatinglabel text="Password">
+                    <kendo-textbox [(ngModel)]="registrationModel.password" placeholder="Enter your password">
+                    </kendo-textbox>
+                </kendo-floatinglabel>
+            </div>
+            <a class="forgot-password" [routerLink]="['/forget-password']" routerLinkActive="router-link-active">Forgot
+                password?</a>
+
+            <button kendoButton class="login-button" [primary]="true" (click)="onLogin()">Login</button>
+
+            <footer>© 2025 Employee Management System</footer>
+        </div>
+        <button kendoButton  [routerLink]="['/welcome']" routerLinkActive="router-link-active">Home</button>
+    </div>
+
+
+
+</div>
+
+<!-- <app-baseclass [UserIdentifier]="registrationModel.UsernameOrEmail"></app-baseclass> -->

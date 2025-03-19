@@ -1,0 +1,20 @@
+<div style="display: grid; grid-template-columns: 50% 50%;">
+    <div>
+        <kendo-floatinglabel text="UserName" >
+            <kendo-textbox [readonly]="true" [(ngModel)]="userName"></kendo-textbox>
+        </kendo-floatinglabel>
+        <div>&nbsp;</div>
+        
+        <button kendoButton  class="bttn-primary" style="margin-top: 16px; margin-bottom: 10px;width: 92%;"
+          (click)="fnValidate()">Add Department</button>
+    </div>
+    <div>
+        <kendo-floatinglabel text="Department Name" [labelCssClass]="'required'">
+            <kendo-textbox (valueChange)="valueChange($event)" [(ngModel)]="departmentName" [maxlength]="50"></kendo-textbox>
+        </kendo-floatinglabel>
+        <div>&nbsp;</div>
+
+        <button kendoButton style="margin-top: 16px; margin-bottom: 10px;width: 92%;"
+          (click)="cancel()">Cancel</button>
+    </div>
+</div>

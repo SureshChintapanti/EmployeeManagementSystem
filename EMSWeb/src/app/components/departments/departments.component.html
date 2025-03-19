@@ -1,0 +1,15 @@
+<app-nav></app-nav>
+<div style="display: flex; justify-content: end;">
+    <button kendoButton class="bttn-primary" style="margin-top: 10px; margin-bottom: 10px;" (click)="addDepartment()" >Add Department</button>
+</div>
+
+<kendo-grid #grid (cellClick)="onCellClick($event)" [style.height.px]="'500'" [kendoGridBinding]="gridDpData" [pageable]="true" [sortable]="true" [pageSize]="10" (sortChange)="fnSortChange($event)">
+    <kendo-grid-column field="DepartmentID" title="Department ID"></kendo-grid-column>
+    <kendo-grid-column field="DepartmentName" title="Department Name"></kendo-grid-column>
+    <kendo-grid-column field="EmployeeCount" title="Employee Count"></kendo-grid-column>
+ </kendo-grid>
+
+ <!-- Context Menu -->
+<kendo-contextmenu #gridmenu [kendoMenuHierarchyBinding]="menuItems" [textField]="['text', 'childText']"
+childrenField="children" svgIconField="svgIcon" separatorField="separator"
+(select)="onSelect($event)"></kendo-contextmenu>

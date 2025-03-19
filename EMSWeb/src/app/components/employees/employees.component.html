@@ -1,0 +1,44 @@
+<div style=" height: 97vh;">
+   <app-nav></app-nav>
+   <div class="card-container">
+      <div class="card" style="background-color: white;"><i class="fa fa-users"></i>Total Employees<br>{{empCount}}
+      </div>
+      <!-- <div class="card" style="background-color: white;"><i class="fa fa-user-plus"></i>New This Month<br>0</div> -->
+      <div class="card" style="background-color: white;"><i class="fa fa-user-times"></i>On Leave<br>{{leaveCount}}
+      </div>
+      <div class="card" style="background-color: white;"><i
+            class="fa fa-building"></i>Departments<br>{{departmentsCount}}</div>
+   </div>
+   <div style="display: flex; justify-content: end;">
+      <button kendoButton class="bttn-primary" style="margin-top: 10px; margin-bottom: 10px;"
+         (click)="addEmployee()">Add Employee</button>
+
+   </div>
+   <kendo-grid #grid (cellClick)="onCellClick($event)" [style.height.px]="'450'" [pageSize]="10"
+      [kendoGridBinding]="gridEmpData" [pageable]="true" [sortable]="true" (sortChange)="fnSortChange($event)">
+      <kendo-grid-column field="EmployeeID" title="Employee ID"></kendo-grid-column>
+      <kendo-grid-column field="EmployeeFullName" title="Employee Name">
+         <ng-template kendoGridCellTemplate let-dataItem>
+            <a [routerLink]="['/update-employee']" [queryParams]="{ employeeId: dataItem.EmployeeID, userId: UserId} " [routerLinkActive]="['router-link-active']" class="cell-style" >
+               {{ dataItem.EmployeeFullName }}
+            </a>
+         </ng-template>
+
+      </kendo-grid-column>
+      <kendo-grid-column field="JoinDate" title="Join Date">
+         <ng-template kendoGridCellTemplate let-dataItem> {{ dataItem.JoinDate | date: 'yyyy/MM/dd' }}</ng-template>
+      </kendo-grid-column>
+      <kendo-grid-column field="EmploymentStatus" title="Status"></kendo-grid-column>
+      <kendo-grid-column field="DepartmentName" title="Department Name"></kendo-grid-column>
+      <kendo-grid-column field="HomeAddress" title="Home Address"></kendo-grid-column>
+      <kendo-grid-column field="EmergencyContactName" title="Contact Name"></kendo-grid-column>
+      <kendo-grid-column field="EmergencyContactRelationship" title="Relationship"></kendo-grid-column>
+      <kendo-grid-column field="EmergencyContactPhone" title="Emergency Phone"></kendo-grid-column>
+      <kendo-grid-column field="Notes" title="Notes"></kendo-grid-column>
+
+   </kendo-grid>
+</div>
+<!-- Context Menu -->
+<kendo-contextmenu #gridmenu [kendoMenuHierarchyBinding]="menuItems" [textField]="['text', 'childText']"
+   childrenField="children" svgIconField="svgIcon" separatorField="separator"
+   (select)="onSelect($event)"></kendo-contextmenu>

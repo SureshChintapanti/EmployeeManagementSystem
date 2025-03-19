@@ -1,0 +1,141 @@
+<app-nav></app-nav>
+
+<div class="registration-container">
+    <h2 class="text-2xl font-semibold mb-4">{{title}}</h2>
+    <div class="containers">
+        <!-- Personal Information -->
+        <div class="section">
+            <h3>Personal Information</h3>
+            <div class="grid-container">
+                <div>
+                    <kendo-floatinglabel    [labelCssClass]="'required'"   [style]="{'width': '88%'}"  text="First Name">
+                        <kendo-textbox   (valueChange)="valueChange($event)"  [(ngModel)]="employeeObj.FirstName" [maxlength]="50"></kendo-textbox>
+                    </kendo-floatinglabel>
+                </div>
+                <div>
+                    <kendo-floatinglabel   [labelCssClass]="'required'"  [style]="{'width': '88%'}"  text="Last Name">
+                        <kendo-textbox (valueChange)="valueChange($event)"   [(ngModel)]="employeeObj.LastName" [maxlength]="50"></kendo-textbox>
+                    </kendo-floatinglabel>
+                </div>
+            </div>
+            <div class="grid-container">
+                <div>
+                    <kendo-floatinglabel   [labelCssClass]="'required'"  [style]="{'width': '88%'}"  text="Email">
+                        <kendo-textbox (valueChange)="valueChange($event)"  [(ngModel)]="employeeObj.Email" [maxlength]="100"></kendo-textbox>
+                    </kendo-floatinglabel>
+                </div>
+                <div>
+                    <kendo-floatinglabel   [labelCssClass]="'required'"  [style]="{'width': '88%'}"  text="Phone Number">
+                        <kendo-numerictextbox (valueChange)="valueChange($event)" [format]="'#'"  [(ngModel)]="employeeObj.PhoneNumber" [min]="1" [maxlength]="14"></kendo-numerictextbox>
+                    </kendo-floatinglabel>
+                </div>
+            </div>
+            <div class="grid-container">
+                <div>
+                    <kendo-floatinglabel   [labelCssClass]="'required'"  [style]="{'width': '88%'}"  text="Home Address" class="col-span-2">
+                        <kendo-textbox (valueChange)="valueChange($event)"  [(ngModel)]="employeeObj.HomeAddress" [maxlength]="100"></kendo-textbox>
+                    </kendo-floatinglabel>
+
+                </div>
+                <div>
+               
+                        <kendo-floatinglabel    [labelCssClass]="'required'"   [style]="{'width': '88%'}"  text="Full Name">
+                            <kendo-textbox   (valueChange)="valueChange($event)"  [(ngModel)]="employeeObj.EmployeeFullName" [maxlength]="50"></kendo-textbox>
+                        </kendo-floatinglabel>
+                   
+                </div>
+            </div>
+        </div>
+
+        <!-- Employment Details -->
+        <div class="section">
+            <h3 class="text-xl font-medium mb-2">Employment Details</h3>
+
+            <div class="grid-container">
+                <div>
+                    <!-- <kendo-floatinglabel   [labelCssClass]="'required'"  [style]="{'width': '88%'}"  text="Employee ID">
+                        <kendo-numerictextbox (valueChange)="valueChange($event)" [format]="'n0'"  [(ngModel)]="employeeObj.EmployeeId" [min]="1" [maxlength]="14"></kendo-numerictextbox>
+                    </kendo-floatinglabel> -->
+                    <kendo-floatinglabel [labelCssClass]="'required'" [style]="{'width': '88%'}" text="Department">
+                        <kendo-dropdownlist 
+                            (valueChange)="onDepartmentChange($event)" 
+                            [data]="allDepartments"  
+                            [(ngModel)]="employeeObj.Department" 
+                            [textField]="'DepartmentName'" 
+                            [valueField]="'DepartmentID'">
+                        </kendo-dropdownlist>
+                    </kendo-floatinglabel>
+                </div>
+                <div>
+                    
+                    <kendo-floatinglabel   [labelCssClass]="'required'"  [style]="{'width': '88%'}"  text="Position">
+                        <kendo-textbox (valueChange)="valueChange($event)"  [(ngModel)]="employeeObj.Position" [maxlength]="50"></kendo-textbox>
+                    </kendo-floatinglabel>
+                    
+                </div>
+            </div>
+            <div class="grid-container">
+                <div>
+                    <kendo-floatinglabel   [labelCssClass]="'required'"  [style]="{'width': '88%'}"  text="Salary" class="col-span-2">
+                        <kendo-numerictextbox (valueChange)="valueChange($event)"  [(ngModel)]="employeeObj.Salary" [format]="'n0'" [min]="1"  [maxlength]="14"></kendo-numerictextbox>
+                    </kendo-floatinglabel>
+                </div>
+                <div>
+                    <kendo-floatinglabel   [labelCssClass]="'required'"  [style]="{'width': '88%'}"  text="Start Date">
+                        <kendo-datepicker (valueChange)="valueChange($event)" [(ngModel)]="employeeObj.StartDate"></kendo-datepicker>
+                    </kendo-floatinglabel>
+                </div>
+            </div>
+            <div class="grid-container">
+                <div>
+                    <kendo-floatinglabel   [labelCssClass]="'required'"  [style]="{'width': '88%'}"  text="Employment Status" class="col-span-2">
+                        <kendo-dropdownlist [data]="allEmploymentStatus" (valueChange)="valueChange($event)"  [(ngModel)]="employeeObj.EmploymentStatus"></kendo-dropdownlist>
+                    </kendo-floatinglabel>
+                </div>
+                <div>
+                    
+                </div>
+            </div>
+        </div>
+        <!-- Emergency Contact -->
+        <div class="section">
+            <h3 class="text-xl font-medium mb-2">Emergency Contact</h3>
+            <div class="grid-container">
+                <div>
+                    <kendo-floatinglabel   [labelCssClass]="'required'"  [style]="{'width': '88%'}"  text="Contact Name">
+                        <kendo-textbox (valueChange)="valueChange($event)"  [(ngModel)]="employeeObj.ContactName" [maxlength]="50"></kendo-textbox>
+                    </kendo-floatinglabel>
+                </div>
+                <div>
+                    <kendo-floatinglabel   [labelCssClass]="'required'"  [style]="{'width': '88%'}"  text="Relationship">
+                        <kendo-textbox (valueChange)="valueChange($event)"  [(ngModel)]="employeeObj.Relationship" [maxlength]="50"></kendo-textbox>
+                    </kendo-floatinglabel>
+                </div>
+            </div>
+            <div class="grid-container">
+                <div>
+                    <kendo-floatinglabel   [labelCssClass]="'required'"  [style]="{'width': '88%'}"  text="Emergency Phone Number">
+                        <kendo-numerictextbox (valueChange)="valueChange($event)" [format]="'#'"  [(ngModel)]="employeeObj.EmergencyPhone" [min]="1" [maxlength]="10"></kendo-numerictextbox>
+                    </kendo-floatinglabel>
+                </div>
+            </div>
+        </div>
+        <!-- Additional Notes Section -->
+  
+                <div>
+                    <h3 class="text-xl font-medium mb-2">Additional Notes</h3>
+                    <kendo-floatinglabel   [labelCssClass]="'required'"  [style]="{'width': '93%'}"  text="Notes">
+                        <kendo-textarea (valueChange)="valueChange($event)" [(ngModel)]="employeeObj.Notes" [maxlength]="180"></kendo-textarea>
+                    </kendo-floatinglabel>
+                </div>
+            
+            
+      
+        <!-- Action Buttons -->
+
+    </div>
+    <div class="flex justify-end gap-4" style="margin-top: 20px;">
+        <button kendoButton [themeColor]="'secondary'" [style.marginRight]="'40px'" [fillMode]="'solid'" (click)="onCancelClick()">Cancel</button>
+        <button kendoButton [themeColor]="'primary'" [fillMode]="'solid'" (click)="fnValidate()">Register Employee</button>
+    </div>
+</div>
