@@ -87,7 +87,11 @@ gridEmpData: any[] = [];
         this.employeeObj.UserIdentifier = this.UserId;
         this.post("api/Employee/saveEmployee", this.employeeObj).subscribe((data: any) => {
           if (data) {
-            this.showNotification("Deleted successful!");
+            this.gridEmpData = [];
+            this.gridDpData = [];
+            setTimeout(() => {
+              this.showNotification("Deleted successful!");
+            }, 100);
             this.getDataSet();
             this.getDpSet();
           }
