@@ -7,7 +7,6 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NavComponent } from "./components/nav/nav.component";
 import { DialogModule } from '@progress/kendo-angular-dialog';
 import { AddemployeeComponent } from "./components/addemployee/addemployee.component";
-import { NotificationComponent } from "./helper/notification/notification.component";
 import { CommonDialogService } from './services/common-dialog.service';
 @Component({
   selector: 'app-root',

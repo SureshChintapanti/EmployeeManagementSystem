@@ -32,6 +32,7 @@ export class RegisterComponent extends BaseclassComponent {
   isUpdate:boolean = false;
   termsAccepted: boolean = false;
   registrationModel: RegistrationModel = new RegistrationModel();
+  title: string = "New Employer Registration";
   constructor(singletonService: SingletonService, public activateRoute: ActivatedRoute) {
     super(singletonService)
   }
@@ -59,8 +60,8 @@ export class RegisterComponent extends BaseclassComponent {
         if (data) {
           this.navigateTo('login');
           setTimeout(() => {
-            this.showNotification("Registration successful!");
-          }, 1000)
+            this.showNotification("successfully saved your changes");
+          }, 500)
         } else {
           this.showAlert("Alert", "Registration failed!");
         }
@@ -169,11 +170,13 @@ export class RegisterComponent extends BaseclassComponent {
   getUserDetails(){
     let apiUrl = "api/Registration/getRegistrationDetails/?RegisteredID=" + parseInt(this.userId);
     this.getData(apiUrl).subscribe((res: any) => {
+      this.title = "Update Registration";
       this.registrationModel = res;
       this.registrationModel.postalCode = parseInt(this.registrationModel.postalCode);
       this.registrationModel.phoneNumber = parseInt(this.registrationModel.phoneNumber);
       this.registrationModel.operation = "U";
       this.registrationModel.registeredID = parseInt(this.userId);
+      this.registrationModel.Username = res.username;
     })
   }
 

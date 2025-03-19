@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { DialogService, DialogRef, DialogCloseResult } from '@progress/kendo-angular-dialog';
 import { Observable, BehaviorSubject } from 'rxjs';
+import { NotificationService } from "@progress/kendo-angular-notification";
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class CommonDialogService {
   private notificationSubject = new BehaviorSubject<string | null>(null);
   public notification$ = this.notificationSubject.asObservable();
 
-  constructor(private dialogService: DialogService) {}
+  constructor(private dialogService: DialogService, private notificationService: NotificationService) {}
 
   // Show Confirmation Dialog
   public showConfirmation(title: string, content: any): Observable<boolean> {
@@ -57,16 +58,29 @@ export class CommonDialogService {
     });
   }
 
-  // Show Notification Message
-  public showNotification(message: string) {
-    this.notificationSubject.next(message);
+  // // Show Notification Message
+  // public showNotification(message: string) {
+  //   this.notificationSubject.next(message);
 
-    // Clear the notification after 3 seconds
-    setTimeout(() => {
-      this.notificationSubject.next(null);
-    }, 3000);
+  //   // Clear the notification after 3 seconds
+  //   setTimeout(() => {
+  //     this.notificationSubject.next(null);
+  //   }, 3000);
+  // }
+
+  public showNotification(message: string): void {
+    this.notificationService.show({
+      content: message,
+      animation: { type: 'fade', duration: 500 },
+      type: { style: 'success', icon: true },
+      position: {
+        horizontal: "right",
+        vertical: "bottom",
+      },
+      width: 200,
+      height: 50
+    });
   }
-
 
   public showDialog(title: string, content: any): Observable<any> {
     const dialog: DialogRef = this.dialogService.open({

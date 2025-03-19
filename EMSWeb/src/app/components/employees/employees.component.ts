@@ -109,6 +109,7 @@ gridEmpData: any[] = [];
 
 
   fnSortChange(ev: any){
+    if(this.gridEmpData.length == 0) return;
     this.sortColumn = ev[0].field;  
     this.sortDirection = ev[0].dir;
     this.getDataSet();
@@ -132,6 +133,7 @@ gridEmpData: any[] = [];
     this.getData(apiUrl).subscribe((res: any) => {
       this.gridEmpData = JSON.parse(res.data);
       this.empCount = this.gridEmpData.length;
+      this.leaveCount = 0;
       this.gridEmpData.forEach((element: any) => {
         if (element.EmploymentStatus == "On Leave") {
           this.leaveCount = this.leaveCount || 0;

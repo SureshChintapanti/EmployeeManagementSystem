@@ -14,7 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
   providers: [SingletonService],
-  imports: [FormsModule, FloatingLabelModule, InputsModule, ButtonModule, RouterLink, HttpClientModule, BaseclassComponent]
+  imports: [FormsModule, FloatingLabelModule, InputsModule, ButtonModule, RouterLink, HttpClientModule]
 })
 export class LoginComponent extends BaseclassComponent {
   email: any = "";
@@ -32,7 +32,6 @@ export class LoginComponent extends BaseclassComponent {
       this.getData(apiUrl).subscribe((data: any) => {
         if (data.userId >= 1) {
           this.navigateTo('employees', { queryParams: { userId : data.userId, username : this.registrationModel.Username } });
-          //this.navigateTo('employees');
           setTimeout(() => {
             this.showNotification("Login successful!");
           }, 1000)

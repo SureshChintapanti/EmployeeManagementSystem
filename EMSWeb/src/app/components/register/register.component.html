@@ -1,4 +1,4 @@
-<h2>New Employer Registration</h2>
+<h2>{{title}}</h2>
 <div class="registration-container">
 
     <div class="containers">
@@ -141,13 +141,13 @@
                 <div>
                     <kendo-floatinglabel [labelCssClass]="'required'" [style]="{'width': '88%'}" text="Username">
                         <kendo-textbox (valueChange)="valueChange($event)" [(ngModel)]="registrationModel.Username"
-                            prefixIcon="user" [disabled]="isUpdate"></kendo-textbox>
+                        [disabled]="isUpdate"      ></kendo-textbox>
                     </kendo-floatinglabel>
                 </div>
                 <div>
                     <kendo-floatinglabel [labelCssClass]="'required'" [style]="{'width': '88%'}" text="Password">
                         <kendo-textbox (valueChange)="valueChange($event)" [(ngModel)]="registrationModel.password"
-                            prefixIcon="lock" type="password"></kendo-textbox>
+                              type="password"></kendo-textbox>
                     </kendo-floatinglabel>
                 </div>
             </div>
